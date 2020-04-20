@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import unittest
 
-from dict_to_excel import WorkbookCreator 
+from workbook_creator import WorkbookCreator 
 
 class TestWorkbookCreator(unittest.TestCase):
     """Class to test the dictionary to Excel script"""
@@ -26,7 +26,6 @@ class TestWorkbookCreator(unittest.TestCase):
         """Setup test fixture: Instantiate the class to test"""
         self.wb = WorkbookCreator()
     
-    @unittest.skip("Need to write class still")
     def testContent(self): 
         """Test standard and obscure values for the content field"""
         self.wb.parseEntry(self.valid_test_values)
@@ -34,13 +33,19 @@ class TestWorkbookCreator(unittest.TestCase):
         # Verify the value got set to the correct cell
         self.assertEqual(self.wb.ws['A2'].value, self.valid_test_values['content'])
 
-        # Test obscure values
-        # TODO
+    def testContentNone(self):
+        """Test Null values"""
         # Copy the values to modify
-        #test_values = dict(self.valid_test_values) 
+        test_values = dict(self.valid_test_values) 
+        test_values['content'] = None
+        self.wb.parseEntry(test_values)
+        self.assertEqual(self.wb.ws['A2'].value, '')
 
+    @unittest.skip("TODO")
+    def testContentObscure(self):
+        """Test obscure values"""
+        self.assertTrue(True)
 
-    @unittest.skip("Need to write class still")
     def testEntity(self):
         """Test standard and obscure values for the entity field"""
         self.wb.parseEntry(self.valid_test_values)
@@ -49,12 +54,19 @@ class TestWorkbookCreator(unittest.TestCase):
         self.assertEqual(self.wb.ws['B2'].value, 
                          self.valid_test_values['entity']['code'][0])
 
-        # Test obscure values
-        # TODO
+    def testEntityNone(self):
+        """Test Null values"""
         # Copy the values to modify
-        #test_values = dict(self.valid_test_values) 
+        test_values = dict(self.valid_test_values) 
+        test_values['entity'] = None
+        self.wb.parseEntry(test_values)
+        self.assertEqual(self.wb.ws['B2'].value, '')
 
-    @unittest.skip("Need to write class still")
+    @unittest.skip("TODO")
+    def testEntityObscure(self):
+        """Test obscure values"""
+        self.assertTrue(True)
+
     def testParentBuild(self):
         """Test standard and obscure values for the sg_parent_build field"""
         self.wb.parseEntry(self.valid_test_values)
@@ -63,12 +75,19 @@ class TestWorkbookCreator(unittest.TestCase):
         self.assertEqual(self.wb.ws['C2'].value, 
                          self.valid_test_values['sg_parent_build']['code'])
 
-        # Test obscure values
-        # TODO
+    def testParentBuildNone(self):
+        """Test Null values"""
         # Copy the values to modify
-        #test_values = dict(self.valid_test_values) 
+        test_values = dict(self.valid_test_values) 
+        test_values['sg_parent_build'] = None
+        self.wb.parseEntry(test_values)
+        self.assertEqual(self.wb.ws['C2'].value, '')
 
-    @unittest.skip("Need to write class still")
+    @unittest.skip("TODO")
+    def testParentBuildObscure(self):
+        """Test obscure values"""
+        self.assertTrue(True)
+
     def testStartDate(self):
         """Test standard and obscure values for the start_date field"""
         self.wb.parseEntry(self.valid_test_values)
@@ -77,12 +96,19 @@ class TestWorkbookCreator(unittest.TestCase):
         self.assertEqual(self.wb.ws['D2'].value, 
                          self.valid_test_values['start_date'])
 
-        # Test obscure values
-        # TODO
+    def testStartDateNone(self):
+        """Test Null values"""
         # Copy the values to modify
-        #test_values = dict(self.valid_test_values) 
+        test_values = dict(self.valid_test_values) 
+        test_values['start_date'] = None
+        self.wb.parseEntry(test_values)
+        self.assertEqual(self.wb.ws['D2'].value, '')
 
-    @unittest.skip("Need to write class still")
+    @unittest.skip("TODO")
+    def testStartDateObscure(self):
+        """Test obscure values"""
+        self.assertTrue(True)
+
     def testDueDate(self):
         """Test standard and obscure values for the due_date field"""
         self.wb.parseEntry(self.valid_test_values)
@@ -91,10 +117,18 @@ class TestWorkbookCreator(unittest.TestCase):
         self.assertEqual(self.wb.ws['E2'].value, 
                          self.valid_test_values['due_date'])
 
-        # Test obscure values
-        # TODO
+    def testDueDateNone(self):
+        """Test Null values"""
         # Copy the values to modify
-        #test_values = dict(self.valid_test_values) 
+        test_values = dict(self.valid_test_values) 
+        test_values['due_date'] = None
+        self.wb.parseEntry(test_values)
+        self.assertEqual(self.wb.ws['E2'].value, '')
+
+    @unittest.skip("TODO")
+    def testDueDateObscure(self):
+        """Test obscure values"""
+        self.assertTrue(True)
 
 if __name__ == '__main__':
     unittest.main()

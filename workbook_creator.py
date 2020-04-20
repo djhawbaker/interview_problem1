@@ -95,12 +95,14 @@ class WorkbookCreator():
             row -- The current row in the worksheet
         """
         red = PatternFill(start_color=RED, end_color=RED, fill_type='solid')
+         
+        # If due date not entered, assume not passed due
+        if (entry['due_date']):
+            due_date = time.strptime(entry['due_date'], '%Y-%m-%d')
 
-        due_date = time.strptime(entry['due_date'], '%Y-%m-%d')
-
-        if (due_date < time.localtime()):
-            for col in range(1, self.ws.max_column+1):
-                self.ws.cell(row=row, column=col).fill = red
+            if (due_date < time.localtime()):
+                for col in range(1, self.ws.max_column+1):
+                    self.ws.cell(row=row, column=col).fill = red
 
 
     def importAndParse(self, pickle_file):
