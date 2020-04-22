@@ -40,3 +40,16 @@ The database returns unfriendly key names for some fields. We map these keys to 
 Then update getValues to query the widgets for their values, and return a dictionary where the keys are the widget labels, and the values are the information currently entered into the widgets.
 
 **3)** email_gen.py is a Python script that parses the same pickle file from Test 1 and generates an email body string which is printed to the terminal. There are three bugs in the script. Find and fix all three bugs. Describe the bugs and how you fixed them in comments.
+
+# Run Instructions
+The program expects an input pickle file and has an optional output file name. 
+If no output file name is provided it will use output.xlsx.
+
+    python3 workbook_creator.py test_data.pkl
+    
+    python3 workbook_creator.py test_data.pkl -o custom_output.xlsx
+
+Separate unit tests have been written for the script to validate that it handles a variety of data from the pickle file. 
+To run those tests run the command
+
+    python3 test_workbook_creator.py
